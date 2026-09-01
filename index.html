@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D HTML/CSS Rubik's Cube</title>
+    <style>
+        /* Center the cube on the screen */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #111827;
+            margin: 0;
+            overflow: hidden;
+            perspective: 1000px; /* Gives the realistic 3D depth */
+        }
+
+        /* Container that holds the cube and controls the rotation animation */
+        .rubiks-cube {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+            animation: spinCube 12s linear infinite;
+        }
+
+        /* Base styles for all 6 faces */
+        .face {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #000000; /* Black plastic base of the cube */
+            box-sizing: border-box;
+            padding: 6px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 6px; /* Black plastic gaps between stickers */
+            border: 4px solid #000000;
+            border-radius: 12px;
+            backface-visibility: hidden; /* Hides internal back-faces for rendering clarity */
+        }
+
+        /* Individual sticker designs */
+        .sticker {
+            border-radius: 6px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Official Rubik's Cube Color Scheme */
+        .white  { background-color: #ffffff; }
+        .yellow { background-color: #ffd500; }
+        .green  { background-color: #009b48; }
+        .blue   { background-color: #0046ad; }
+        .red    { background-color: #b71234; }
+        .orange { background-color: #ff5800; }
+
+        /* Position the 6 faces in 3D Space (Moved out by 150px, half of the 300px width) */
+        .face-top    { transform: rotateX(90deg) translateZ(150px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(150px); }
+        .face-front  { transform: translateZ(150px); }
+        .face-back   { transform: rotateY(180deg) translateZ(150px); }
+        .face-left   { transform: rotateY(-90deg) translateZ(150px); }
+        .face-right  { transform: rotateY(90deg) translateZ(150px); }
+
+        /* Complex animation to show off all sides of the Rubik's Cube */
+        @keyframes spinCube {
+            0% {
+                transform: rotateX(-25deg) rotateY(45deg);
+            }
+            50% {
+                transform: rotateX(25deg) rotateY(225deg);
+            }
+            100% {
+                transform: rotateX(-25deg) rotateY(405deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="rubiks-cube">
+        <!-- TOP FACE (WHITE) -->
+        <div class="face face-top">
+            <div class="sticker white"></div><div class="sticker white"></div><div class="sticker white"></div>
+            <div class="sticker white"></div><div class="sticker white"></div><div class="sticker white"></div>
+            <div class="sticker white"></div><div class="sticker white"></div><div class="sticker white"></div>
+        </div>
+
+        <!-- BOTTOM FACE (YELLOW) -->
+        <div class="face face-bottom">
+            <div class="sticker yellow"></div><div class="sticker yellow"></div><div class="sticker yellow"></div>
+            <div class="sticker yellow"></div><div class="sticker yellow"></div><div class="sticker yellow"></div>
+            <div class="sticker yellow"></div><div class="sticker yellow"></div><div class="sticker yellow"></div>
+        </div>
+
+        <!-- FRONT FACE (GREEN) -->
+        <div class="face face-front">
+            <div class="sticker green"></div><div class="sticker green"></div><div class="sticker green"></div>
+            <div class="sticker green"></div><div class="sticker green"></div><div class="sticker green"></div>
+            <div class="sticker green"></div><div class="sticker green"></div><div class="sticker green"></div>
+        </div>
+
+        <!-- BACK FACE (BLUE) -->
+        <div class="face face-back">
+            <div class="sticker blue"></div><div class="sticker blue"></div><div class="sticker blue"></div>
+            <div class="sticker blue"></div><div class="sticker blue"></div><div class="sticker blue"></div>
+            <div class="sticker blue"></div><div class="sticker blue"></div><div class="sticker blue"></div>
+        </div>
+
+        <!-- LEFT FACE (ORANGE) -->
+        <div class="face face-left">
+            <div class="sticker orange"></div><div class="sticker orange"></div><div class="sticker orange"></div>
+            <div class="sticker orange"></div><div class="sticker orange"></div><div class="sticker orange"></div>
+            <div class="sticker orange"></div><div class="sticker orange"></div><div class="sticker orange"></div>
+        </div>
+
+        <!-- RIGHT FACE (RED) -->
+        <div class="face face-right">
+            <div class="sticker red"></div><div class="sticker red"></div><div class="sticker red"></div>
+            <div class="sticker red"></div><div class="sticker red"></div><div class="sticker red"></div>
+            <div class="sticker red"></div><div class="sticker red"></div><div class="sticker red"></div>
+        </div>
+    </div>
+
+</body>
+</html>
